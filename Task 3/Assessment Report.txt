@@ -1,0 +1,21 @@
+Title: Password Transmitted over HTTP
+
+Domain: zero.webappsecurity.com
+Sub Domain: zero.webappsecurity.com/signin.html 
+
+Steps to Reproduce:
+
+Step 1: Open to http://zero.webappsecurity.com
+
+Step 2: Go To Signin on right top
+
+Step 3: Inspect the Form: Use your browser’s developer tools to inspect the login form. Note that the form's action attribute points to http://zero.webappsecurity.com/signin.html.
+
+Step 5: Enter a test username and password in the login form and submit it.
+
+Step 6: Observe Network Traffic: Use a network traffic analyzer (like Wireshark). You will see that the credentials are transmitted in plain text over HTTP.
+
+Impact: When credentials are transmitted over HTTP, they are sent in plain text. This means that any attacker who can intercept the network traffic (e.g., via a man-in-the-middle attack) can easily read the username and password. This can lead to unauthorized access to user accounts, potentially exposing sensitive information and compromising the security of the entire application.
+
+Mitigation: Implement HTTP Strict Transport Security (HSTS) to ensure that all connections to your website are made over HTTPS.
+Ensure all internal links and form actions point to HTTPS URLs. This includes updating the login form’s action attribute to use HTTPS.
